@@ -12,7 +12,7 @@ const pingSvc = new adaptor({
 });
 
 clientSocket
-  .connect(sock,function(){
+  .connect(8001, () => {
     console.log('c onConnect');
     clientSocket
       .pipe(pingSvc)
