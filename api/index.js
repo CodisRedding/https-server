@@ -1,22 +1,22 @@
 'use strict';
 
-const clientSocket = require('net');
+const net = require('net');
 const adaptor = require('microservice-adaptor');
 
 
 const pingSvc = new adaptor({
-  test: (callback, header, body, data) => {
+  ping: (callback, header, body, data) => {
     console.log('test call', header);
 		data(header).type('text/plain');
   }
 });
 
-clientSocket
+const client = net
   .connect(8001, () => {
     console.log('c onConnect');
-    clientSocket
+    client
       .pipe(pingSvc)
-      .pipe(clientSocket);
+      .pipe(client);
   });
 
 const api = {
