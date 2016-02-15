@@ -1,5 +1,23 @@
 'use strict';
 
+const clientSocket = require('net');
+const adaptor = require('microservice-adaptor');
+
+
+const pingSvc = new adaptor({
+  test: (callback, header, body, data) => {
+    console.log('test call', header);
+		data(header).type('text/plain');
+  }
+});
+
+clientSocket
+  .connect(sock,function(){
+    console.log('c onConnect');
+    clientSocket
+      .pipe(pingSvc)
+      .pipe(clientSocket);
+  });
 
 const api = {
   register: (server, options, next) => {
@@ -7,7 +25,9 @@ const api = {
       method: 'GET',
       path: '/',
       handler: (request, reply) => {
-        reply({message: '@premise development'});
+        console.log('http client connect');
+        pingSvc.data = reply;
+        pingSvc._callback('ping', 'derp');
       }
     });
 
