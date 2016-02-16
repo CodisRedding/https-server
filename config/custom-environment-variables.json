@@ -1,0 +1,10 @@
+{
+  "port": "MICROSERVICE_HTTPS_SERVER_PORT",
+  "host": "MICROSERVICE_HTTPS_SERVER_HOST",
+  "microservices": {
+    "ping": {
+      "port": "MICROSERVICE_PING_PORT",
+      "host": "MICROSERVICE_PING_HOST"
+    }
+  }
+}

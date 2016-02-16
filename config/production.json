@@ -1,0 +1,10 @@
+{
+  "port": "NO_ENV_VAR_PROVIDED",
+  "host": "NO_ENV_VAR_PROVIDED",
+  "microservices": {
+    "ping": {
+      "port": "NO_ENV_VAR_PROVIDED",
+      "host": "NO_ENV_VAR_PROVIDED"
+    }
+  }
+}

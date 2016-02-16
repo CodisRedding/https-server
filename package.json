@@ -17,11 +17,11 @@
   "author": "Rocky Assad",
   "license": "ISC",
   "dependencies": {
+    "config": "^1.19.0",
     "glue": "^3.2.0",
     "hapi": "^13.0.0",
     "hapi-swagger": "^4.2.1",
     "inert": "^3.2.0",
-    "nconf": "^0.8.4",
     "service-adapter": "0.0.4",
     "vision": "^4.0.1"
   },

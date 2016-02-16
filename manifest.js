@@ -1,6 +1,6 @@
 'use strict';
 
-const config = require('./config');
+const config = require('config');
 const pkg = require('./package.json');
 
 
@@ -16,8 +16,9 @@ module.exports = {
     }
   },
   connections: [{
-    port: config('port'),
-    labels: config('labels')
+    port: config.get('port'),
+    host: config.get('host'),
+    labels: ['microservice', 'https', 'server']
   }],
   registrations: [
     {plugin: 'inert'},

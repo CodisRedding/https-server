@@ -2,6 +2,7 @@
 
 const net = require('net');
 const adaptor = require('service-adapter');
+const config = require('config');
 
 
 const pingSvc = new adaptor({
@@ -11,8 +12,10 @@ const pingSvc = new adaptor({
   }
 });
 
+const pingConfig = config.get('microservices.ping');
+
 const client = net
-  .connect(5000, () => {
+  .connect(pingConfig.port, pingConfig.host, () => {
     console.log('c onConnect');
     client
       .pipe(pingSvc)
