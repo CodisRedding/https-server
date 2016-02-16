@@ -1,7 +1,7 @@
 'use strict';
 
 const net = require('net');
-const adaptor = require('microservice-adaptor');
+const adaptor = require('service-adapter');
 
 
 const pingSvc = new adaptor({
@@ -12,7 +12,7 @@ const pingSvc = new adaptor({
 });
 
 const client = net
-  .connect(8001, () => {
+  .connect(5000, () => {
     console.log('c onConnect');
     client
       .pipe(pingSvc)
@@ -27,7 +27,7 @@ const api = {
       handler: (request, reply) => {
         console.log('http client connect');
         pingSvc.data = reply;
-        pingSvc._callback('ping', 'derp');
+        pingSvc._callback('ping', 'ping');
       }
     });
 
